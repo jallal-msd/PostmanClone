@@ -1,7 +1,17 @@
-<div>
+<div class="grid grid-flow-col p-8 m-8 content-center  ">
 
-  <button (click)="httpRequest()"> Click </button>
+  <button (click)="callHttpRequest()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4
+    rounded-full">
+    Send Request
+  </button>
 
-  <p>result</p>
-  <p>{{data}}</p>
+  <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">URL</label>
+  <input type="text" id="url" [(ngModel)]="url"
+    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+
+  <p class="text-xs text-gray-900 dark:text-white">Response</p>
+
+
+  <pre>{{data}}</pre>
 </div>
