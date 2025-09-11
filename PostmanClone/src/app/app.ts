@@ -16,19 +16,48 @@ export class App implements OnInit {
   }
   data: any
   url: string = ""
+  selectedMethod: string = ""
+  file: any
+  call: any
 
-
-  callHttpRequest() {
-    console.log(this.url)
-    this.httpRequest(this.url)
+  fileChanged(e: any) {
+    this.file = e.target.files[0]
+    this.uploadFile(this.file)
   }
-  async httpRequest(url: string) {
+
+  uploadFile(file: any) {
+    let fr = new FileReader();
+    fr.onload = (e) => {
+      console.log(fr.result)
+      this.readFile(fr.result)
+    }
+    fr.readAsText(file)
+  }
+
+  readFile(file: any) {
+
+    this.call = file.split("|")
+    console.log("here", this.call[0])
+  }
+  callHttpRequest() {
+    for (let j = 0; j < this.call.length; j++) {
+      this.url = this.call[1].trim()
+      this.selectedMethod = this.call[0].trim()
+    }
+
+
+    console.log(this.url)
+    console.log(this.selectedMethod)
+    this.httpRequest(this.url, this.selectedMethod)
+  }
+  async httpRequest(url: string, method: string) {
 
     try {
       const res = await fetch(url, {
-        method: "GET",
+        method: method,
       });
       if (!res.ok) {
+        this.data = "Response status :" + res.status
         throw new Error(`Response status : ${res.status}`);
       }
       this.data = await res.json();
