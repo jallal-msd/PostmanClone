@@ -1,11 +1,13 @@
 # PostmanClone
 
+<!--
+Postman clone
 
-# Postman clone
+can use http request to call url 
+and can use file to make call
 
-# can use http request to call url 
-# and can use file to make call
+file should be formatted in 
 
-# file should be formatted in 
+method | url
 
-# method | url
+i-->
