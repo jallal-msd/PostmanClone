@@ -13,8 +13,4 @@
 ```
 
 ## Can process multiple calls from file 
-````
- method | url
- method | url
 
-```
