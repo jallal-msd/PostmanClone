@@ -51,28 +51,28 @@ export class App implements OnInit {
     //   this.url = this.call[1].trim()
     //   this.selectedMethod = this.call[0].trim()
     // }
-    this.calls.forEach((call) => {
-      if (call.length > 1) {
-        console.log("here i am ", call)
-        this.url = call[1].trim()
-        this.selectedMethod = call[0].trim()
-        console.log(this.url)
-        console.log(this.selectedMethod)
-        this.httpRequest(this.url, this.selectedMethod)
+    if (this.file) {
+      this.calls.forEach((call) => {
+        if (call.length > 1) {
+          console.log("here i am ", call)
+          this.url = call[1].trim()
+          this.selectedMethod = call[0].trim()
+          console.log(this.url)
+          console.log(this.selectedMethod)
+          this.httpRequest(this.url, this.selectedMethod)
 
-        this.data = [""]
-        this.calls = [[]]
-      }
-      // this.url = call[1].trim()
-      // this.selectedMethod = call[0].trim()
-      //
-      // console.log(this.url)
-      // console.log(this.selectedMethod)
-    })
+          this.data = [""]
+          this.calls = [[]]
+        }
+      })
+    } else {
 
-    console.log(this.url)
-    console.log(this.selectedMethod)
-    // this.httpRequest(this.url, this.selectedMethod)
+      console.log(this.url)
+      console.log(this.selectedMethod)
+      this.httpRequest(this.url, this.selectedMethod)
+
+    }
+
   }
   async httpRequest(url: string, method: string) {
 
